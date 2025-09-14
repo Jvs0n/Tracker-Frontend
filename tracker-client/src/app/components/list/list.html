@@ -1,0 +1,40 @@
+@if(!isLoggedIn()) {
+  <div class="warning-message">
+  <h2>You have to log in to view this page.</h2>
+  </div>
+} @else {
+  <h2>Saved Locations</h2>
+  <table>
+    <tr>
+
+      <th class="sortable-header" (click)="sortLocations('time')">
+        Date (d/m/y)
+        @if (sortColumn === 'time') {
+          <span class="sort-icon">{{ sortAscending ? '↓' : '↑' }}</span>
+        }
+      </th>
+      <th class="sortable-header" (click)="sortLocations('latitude')">
+        Latitude
+        @if (sortColumn === 'latitude') {
+          <span class="sort-icon">{{ sortAscending ? '↓' : '↑' }}</span>
+        }
+      </th>
+      <th class="sortable-header" (click)="sortLocations('longitude')">
+        Longitude
+        @if (sortColumn === 'longitude') {
+          <span class="sort-icon">{{ sortAscending ? '↓' : '↑' }}</span>
+        }
+      </th>
+    </tr>
+
+    @for (loc of locations; track loc.time) {
+      <tr>
+        <td>{{ loc.time | date:'short' }}</td>
+        <td>{{ loc.latitude }}</td>
+        <td>{{ loc.longitude }}</td>
+      </tr>
+    }
+  </table>
+
+
+}

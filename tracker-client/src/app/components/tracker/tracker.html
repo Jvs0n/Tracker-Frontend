@@ -1,0 +1,30 @@
+@if (!isLoggedIn()) {
+  <div class="warning-message">
+    <h2>You have to log in to view this page.</h2>
+  </div>} @else {
+<h2>Hello {{username}}!</h2>
+
+
+@if (latitude && longitude) {
+  <div>
+    <p>Latitude: {{ latitude }}</p>
+    <p>Longitude: {{ longitude }}</p>
+  </div>
+}
+<div class="button-group">
+<button mat-raised-button (click)="getLocation()">
+  Refresh Location
+</button>
+
+<button mat-raised-button (click)="saveLocation()">
+  Save Location
+</button>
+
+<button mat-raised-button (click)="goToList()">
+  Show Saved Locations
+</button>
+</div>
+<div class="map-container">
+  <div id="map"></div>
+</div>
+}

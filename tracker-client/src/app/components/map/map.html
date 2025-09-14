@@ -1,0 +1,88 @@
+
+<div class="map-auth-wrapper">
+
+  <div class="auth-forms">
+    <div class="auth-form-container">
+
+      <form (ngSubmit)="onLogin()" #loginForm="ngForm" class="auth-form login-container">
+        <h2>Login</h2>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Username</mat-label>
+          <input matInput name="loginUsername" [(ngModel)]="loginUsername" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Password</mat-label>
+          <input matInput name="loginPassword" [(ngModel)]="loginPassword" type="password" required>
+        </mat-form-field>
+
+        <button mat-raised-button type="submit" [disabled]="!loginForm.form.valid">
+          Login
+        </button>
+
+
+      </form>
+    </div>
+    <div class="divider-container">
+      <mat-divider></mat-divider>
+      <span>or</span>
+      <mat-divider></mat-divider>
+    </div>
+    <div class="auth-form-container" style="margin-top: 20px">
+      <form (ngSubmit)="onRegister()" #registerForm="ngForm" class="auth-form register-container">
+        <h2>Register</h2>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Username</mat-label>
+          <input matInput [(ngModel)]="regUsername" name="regUsername" required minlength="6">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Firstname</mat-label>
+          <input matInput [(ngModel)]="regFirstname" name="regFirstname" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Lastname</mat-label>
+          <input matInput [(ngModel)]="regLastname" name="regLastname" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Password</mat-label>
+          <input matInput [(ngModel)]="regPassword" name="regPassword" required minlength="7" type="password">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Repeat Password</mat-label>
+          <input matInput [(ngModel)]="regPassword2" name="regPassword2" required type="password">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput [(ngModel)]="regEmail" name="regEmail" required type="email">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Repeat Email</mat-label>
+          <input matInput [(ngModel)]="regEmail2" name="regEmail2" required type="email">
+        </mat-form-field>
+
+        <button mat-raised-button type="submit" [disabled]="!registerForm.form.valid">
+          Register
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="info-icon-container">
+    <div class="info-icon">
+      &#8505;
+      <span class="tooltip">This is an interactive map.<br> Log in to view your personalized location!</span>
+    </div>
+  </div>
+
+
+  <div class="map-container">
+    <div id="generalMap"></div>
+  </div>
+</div>
