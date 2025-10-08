@@ -3,7 +3,12 @@ export interface User {
   username: string;
   email: string;
   isAdmin: boolean;
-  firstName?: string;
-  lastName?: string;
+  firstname?: string;
+  lastname?: string;
+  address?: string;
+  postalCode?: string;
+  city?: string;
+  country?: string;
+  sex?: string;
 }
 

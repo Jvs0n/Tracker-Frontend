@@ -48,18 +48,21 @@ export class MapComponent implements AfterViewInit {
       map.invalidateSize();
     }, 0);
   }
+  ngOnInit() {
+    this.loginUsername = localStorage.getItem('username') || '';
+  }
 
   onLogin() {
     this.userService.login(this.loginUsername, this.loginPassword).subscribe(user => {
       if (user) {
         this.userService.getUserId();
+        localStorage.setItem('user', JSON.stringify(user));
         localStorage.setItem('username', this.loginUsername);
         localStorage.setItem('userId', String(user.id));
         this.router.navigate(['/tracker']).then();
       } else {
         this.loginUsername = '';
         this.loginPassword = '';
-        alert('Invalid username or password');
       }
     });
   }

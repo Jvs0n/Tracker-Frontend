@@ -13,13 +13,16 @@ export class UserService {
 
   constructor(private http: HttpClient, private router: Router) {
   }
+
   private loadUserFromSessionStorage(): User | undefined {
     const userData = sessionStorage.getItem('user');
     return userData ? JSON.parse(userData) : undefined;
   }
+
   getUserId(): number | undefined {
     return this.user.value?.id;
   }
+
   isLoggedIn(): boolean {
     return !!this.user.value;
   }
@@ -29,9 +32,9 @@ export class UserService {
   }
 
   login(username: string, password: string): Observable<User | undefined> {
-    console.log('Login request sent with:', { username, password });
+    console.log('Login request sent with:', {username, password});
     return new Observable(subscriber => {
-      this.http.post<User>(`${this.apiUrl}/login/`, { username, password }).pipe(
+      this.http.post<User>(`${this.apiUrl}/login/`, {username, password}).pipe(
         catchError(error => {
 
           console.error('Login request failed:', error);
@@ -87,6 +90,7 @@ export class UserService {
       });
     });
   }
+
   logout(): void {
     console.log('User logged out');
     sessionStorage.removeItem('user');
@@ -94,7 +98,17 @@ export class UserService {
     this.router.navigate(['/']).then();
   }
 
-
-
-
+  update(data: any) {
+    console.log('Sending update request for user:', data);
+    return this.http.put(`${this.apiUrl}/update/`, data).pipe(
+      catchError(error => {
+        console.error('Update request failed:', error);
+        return of(undefined);
+      })
+    );
+  }
 }
+
+
+
+

@@ -1,0 +1,68 @@
+@if (!isLoggedIn()) {
+  <p>Please log in to view</p>
+} @else {
+  <div class="auth-form-container">
+    <form (ngSubmit)="updateUser()" #updateForm="ngForm" class="auth-form login-container">
+      <h2>Profile Settings</h2>
+
+      <div class="form-row">
+        <div class="system-data">
+          <h3>System Data</h3>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Username</mat-label>
+            <input matInput name="loginUsername" [(ngModel)]="loginUsername" required>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Email</mat-label>
+            <input matInput name="loginEmail" [(ngModel)]="loginEmail" required>
+          </mat-form-field>
+        </div>
+
+        <div class="address-data">
+          <h3>Address Data</h3>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Address</mat-label>
+            <input matInput name="address" [(ngModel)]="address" required>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Postal Code</mat-label>
+            <input matInput name="postalCode" [(ngModel)]="postalCode" required>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>City</mat-label>
+            <input matInput name="city" [(ngModel)]="city" required>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Country</mat-label>
+            <input matInput name="country" [(ngModel)]="country" required>
+          </mat-form-field>
+        </div>
+
+        <div class="personal-data">
+          <h3>Personal Data</h3>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Firstname</mat-label>
+            <input matInput name="loginFirstname" [(ngModel)]="loginFirstname" required>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Lastname</mat-label>
+            <input matInput name="loginLastname" [(ngModel)]="loginLastname" required>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Sex</mat-label>
+            <input matInput name="sex" [(ngModel)]="sex" required>
+          </mat-form-field>
+          <br>
+        </div>
+      </div>
+
+      <button mat-raised-button type="submit">Update</button>
+    </form>
+  </div>
+}

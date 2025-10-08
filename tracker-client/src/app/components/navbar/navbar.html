@@ -4,14 +4,17 @@
     <a href="/">{{username}}'s Tracker</a>
   } @else {
     <a href="/">Location Tracker</a>
-
   }
   </div>
   <ul class="nav-links">
+    <li>
+      <a href="/profile">
+        <img ngSrc="/user-svgrepo-com.svg" alt="user-icon" height="18" width="18">
+      </a>
+    </li>
     <li><a href="/map">Map</a></li>
     <li><a href="#" (click)="goToTracker(); $event.preventDefault()">Tracker</a></li>
     <li><a href="#" (click)="goToList(); $event.preventDefault()">List</a></li>
-
     @if (isLoggedIn()) {
       <li><a href="#" (click)="logout(); $event.preventDefault()">Logout</a></li>
     }

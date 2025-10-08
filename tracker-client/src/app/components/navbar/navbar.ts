@@ -1,12 +1,16 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../services/userService/user-service';
 import { Router } from '@angular/router';
-import {User} from '../../models/user'; // Import Router for programmatic navigation
+import {User} from '../../models/user';
+import {NgOptimizedImage} from '@angular/common'; // Import Router for programmatic navigation
 
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.html',
+  imports: [
+    NgOptimizedImage
+  ],
   styleUrls: ['./navbar.css']
 })
 export class Navbar {
